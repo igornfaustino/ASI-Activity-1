@@ -18,7 +18,21 @@ namespace TodoApi.Controllers
 
         private static readonly Dictionary<String, WeatherForecast> cities = new Dictionary<string, WeatherForecast>
         {
-
+            {"5300250",  new WeatherForecast {
+                Date = DateTime.Parse("2020-02-25T16:41:48.1383231+00:00"),
+                TemperatureC = 0,
+                Summary = "Freezing"
+            }},
+            {"5300251",  new WeatherForecast {
+                Date = DateTime.Parse("2020-02-25T16:41:48.1383231+00:00"),
+                TemperatureC = 4,
+                Summary = "Bracing"
+            }},
+            {"5300252",  new WeatherForecast {
+                Date = DateTime.Parse("2020-02-25T16:41:48.1383231+00:00"),
+                TemperatureC = 21,
+                Summary = "Chilly"
+            }},
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
@@ -42,13 +56,7 @@ namespace TodoApi.Controllers
         [HttpGet("{zip}")]
         public WeatherForecast GetByCep(String zip)
         {
-            var rng = new Random();
-            return new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(0),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            };
+            return cities[zip];
         }
     }
 }
